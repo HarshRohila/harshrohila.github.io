@@ -1,0 +1,22 @@
+@mixin atleastMedium() {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin uptoMedium() {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin atleastLargePhone() {
+  @media only screen and (min-width: 600px) {
+    @content;
+  }
+}
+@mixin uptoLargePhone() {
+  @media only screen and (max-width: 599px) {
+    @content;
+  }
+}
