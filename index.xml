@@ -26,7 +26,7 @@ I am Harsh Rohila, working as a Software Engineer.
 I am a TypeScript Full Stack Developer, developing Serverless Apps(AWS) and Web Components(Stencil.js), and also doing CI/CD with Jenkins and AWS CodePipelines. I am using TypeScript(AWS CDK) to create all AWS Cloud infrastructure
 This blog is to share what I learned from my experience in this field.
 Background I started with learning JavaScript and got to work on an Ember.js project.</description></item><item><title>Contact</title><link>https://www.rohilaharsh.in/contact/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.rohilaharsh.in/contact/</guid><description> Your Name Email Address An email address is required. Message Alternatively, you can send email to rohilaharsh@gmail.com</description></item><item><title>Projects</title><link>https://www.rohilaharsh.in/projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.rohilaharsh.in/projects/</guid><description>1. React Custom Events Library It makes using Custom Events easy.
-2. CDK Secure Parameter Store An AWS CDK library to create Secure Parameter Store on AWS.
-3. PipedRx - An ad-free YouTube Frontend An Ad-free YouTube Frontend which can be used instead of original YouTube. This is using RxJS, Redux and Stencil.js.
+... 2. CDK Secure Parameter Store An AWS CDK library to create Secure Parameter Store on AWS.
+... 3. PipedRx - An ad-free YouTube Frontend An Ad-free YouTube Frontend which can be used instead of original YouTube. This is using RxJS, Redux and Stencil.js.
 4. Forms Library Make validating form elements easy
-5. Todo List 6. Movie Search Bar Others 1. Firefox Android Extension for YouTube Share video URLs with timestamps easily in YouTube Mobile</description></item></channel></rss>
+5. Todo List 6. Movie Search Bar Others 1.</description></item></channel></rss>
