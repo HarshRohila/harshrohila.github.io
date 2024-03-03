@@ -2,11 +2,6 @@
   // <stdin>
   var Chart = window.Chart;
   (async function() {
-    const data = [
-      { type: "Front-End", count: 10 },
-      { type: "Back-End", count: 20 },
-      { type: "Dev Ops", count: 15 }
-    ];
     const myData = [
       { category: "Language", label: "JavaScript", value: 1, color: "#F1E05A" },
       { category: "Language", label: "TypeScript", value: 4, color: "#3178C6" },
@@ -27,16 +22,19 @@
     new Chart(document.getElementById("exp-chart"), {
       type: "bar",
       options: {
+        indexAxis: "y",
+        aspectRatio: 0.8,
         scales: {
           x: {
-            stacked: true
-          },
-          y: {
             stacked: true,
+            position: "top",
             title: {
               display: true,
               text: "Years of Experience"
             }
+          },
+          y: {
+            stacked: true
           }
         }
       },
