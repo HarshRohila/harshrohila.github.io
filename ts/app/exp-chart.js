@@ -1,6 +1,26 @@
 (() => {
   // <stdin>
   var Chart = window.Chart;
+  function getChartColors() {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    return {
+      text: isDark ? "#c8c2b8" : "#333333",
+      grid: isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.12)"
+    };
+  }
+  function applyChartTheme(chart) {
+    const colors = getChartColors();
+    Chart.defaults.color = colors.text;
+    chart.options.scales.x.grid.color = colors.grid;
+    chart.options.scales.x.border.color = colors.grid;
+    chart.options.scales.x.ticks.color = colors.text;
+    chart.options.scales.x.title.color = colors.text;
+    chart.options.scales.y.grid.color = colors.grid;
+    chart.options.scales.y.border.color = colors.grid;
+    chart.options.scales.y.ticks.color = colors.text;
+    chart.options.plugins.legend.labels.color = colors.text;
+    chart.update();
+  }
   (async function() {
     const myData = [
       { category: "Language", label: "JavaScript", value: 1, color: "#F1E05A" },
@@ -19,7 +39,8 @@
       { category: "Mobile Apps", label: "Cordova", value: 1, color: "#2C7185" }
     ];
     const categories = [...new Set(myData.map((d) => d.category))];
-    new Chart(document.getElementById("exp-chart"), {
+    const colors = getChartColors();
+    const chart = new Chart(document.getElementById("exp-chart"), {
       type: "bar",
       options: {
         indexAxis: "y",
@@ -30,11 +51,23 @@
             position: "top",
             title: {
               display: true,
-              text: "Years of Experience"
-            }
+              text: "Years of Experience",
+              color: colors.text
+            },
+            ticks: { color: colors.text },
+            grid: { color: colors.grid },
+            border: { color: colors.grid }
           },
           y: {
-            stacked: true
+            stacked: true,
+            ticks: { color: colors.text },
+            grid: { color: colors.grid },
+            border: { color: colors.grid }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: { color: colors.text }
           }
         }
       },
@@ -56,5 +89,13 @@
         ]
       }
     });
+    const observer = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        if (m.attributeName === "data-theme") {
+          applyChartTheme(chart);
+        }
+      }
+    });
+    observer.observe(document.documentElement, { attributes: true });
   })();
 })();

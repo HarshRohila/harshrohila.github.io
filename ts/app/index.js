@@ -1,25 +1,29 @@
 (() => {
-  // ns-hugo:/home/runner/work/rohilaharsh/rohilaharsh/apps/web-dev-blog/assets/ts/app/utils/setScrolledPx.ts
-  var ticking = false;
-  function setScrolledPx() {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const scrolledPx = window.scrollY;
-        document.documentElement.style.setProperty("--scrolled-px", scrolledPx.toString());
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }
-
   // <stdin>
-  function setHeaderHeight() {
-    const headerHeight = document.querySelector("header").clientHeight;
-    document.documentElement.style.setProperty("--header-height", headerHeight.toString());
+  var STORAGE_KEY = "theme-preference";
+  function getPreferredTheme() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored)
+      return stored;
+    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
   }
-  window.addEventListener("scroll", setScrolledPx);
-  window.addEventListener("resize", setScrolledPx);
-  setScrolledPx();
-  window.addEventListener("resize", setHeaderHeight);
-  setHeaderHeight();
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem(STORAGE_KEY, theme);
+  }
+  setTheme(getPreferredTheme());
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      setTheme(e.matches ? "dark" : "light");
+    }
+  });
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("theme-toggle");
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        const current = document.documentElement.getAttribute("data-theme");
+        setTheme(current === "dark" ? "light" : "dark");
+      });
+    }
+  });
 })();
