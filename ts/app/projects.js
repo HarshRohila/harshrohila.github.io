@@ -36,6 +36,6 @@
           message: "hi"
         };
       }
-    }).mount("body");
+    }).mount("#projects-app");
   }
 })();
